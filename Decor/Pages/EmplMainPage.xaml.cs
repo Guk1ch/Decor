@@ -25,5 +25,14 @@ namespace Decor.Pages
         {
             InitializeComponent();
         }
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthorisPage());
+        }
+
+        private void lvGuest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

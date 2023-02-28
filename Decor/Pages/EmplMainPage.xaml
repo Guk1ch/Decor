@@ -9,6 +9,74 @@
       Title="EmplMainPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnBack" Content="Выйти" Click="btnBack_Click"/>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5">
+            <ListView x:Name="lvGuest" ItemsSource="{Binding stuffs}" SelectionChanged="lvGuest_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Height="100"
+                               Width="120"
+                               Grid.Column="0">
+                                <Image.Source>
+                                    <Binding Path="Img">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/img/picture.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <StackPanel Orientation="Vertical"
+                                    Grid.Column="1"
+                                    Margin="10">
+                                <TextBlock Text="{Binding Name}"
+                                       FontSize="20"/>
+                                <TextBlock Text="{Binding Description}"
+                                           TextWrapping="Wrap"
+                                       FontSize="20"/>
+                                <TextBlock Text="Производитель: ">
+                                    <Run Text="{Binding Manufacturer.Name}"
+                                         FontSize="20"/>
+                                </TextBlock>
+                                <TextBlock Text="Цена: "
+                                       FontSize="20">
+                                    <Run Text="{Binding Price}"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding Sale}"
+                                   FontSize="20"
+                                   Grid.Column="2"
+                                   Margin="10, 0">
+                                <Run Text="%"/>
+                            </TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+
     </Grid>
 </Page>

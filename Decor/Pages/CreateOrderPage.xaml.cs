@@ -12,29 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Decor.DataBase;
 
 namespace Decor.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ClienMainPage.xaml
+    /// Логика взаимодействия для CreateOrderPage.xaml
     /// </summary>
-    public partial class ClienMainPage : Page
+    public partial class CreateOrderPage : Page
     {
-        public static List<Stuff> stuffs { get; set; }
-        public ClienMainPage(User user)
+        public CreateOrderPage()
         {
             InitializeComponent();
-            stuffs = new List<Stuff>(BDConnection.connection.Stuff.ToList());
-            DataContext = this;
         }
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AuthorisPage());
+
         }
 
-
-        private void btnCreateOrder_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -12,27 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Decor.DataBase;
 
 namespace Decor.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для GuestPage.xaml
+    /// Логика взаимодействия для AddStuffPage.xaml
     /// </summary>
-    public partial class GuestPage : Page
+    public partial class AddStuffPage : Page
     {
-        public static List<Stuff> stuffs { get; set; } 
-        public GuestPage()
+        public AddStuffPage()
         {
             InitializeComponent();
-            stuffs = new List<Stuff>(BDConnection.connection.Stuff.ToList());
-            DataContext = this;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AuthorisPage());
+            NavigationService.GoBack();
         }
-
     }
 }

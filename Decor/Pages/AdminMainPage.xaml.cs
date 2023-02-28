@@ -21,9 +21,12 @@ namespace Decor.Pages
     /// </summary>
     public partial class AdminMainPage : Page
     {
+        public static List<Stuff> stuffs { get; set; }
         public AdminMainPage(User user)
         {
             InitializeComponent();
+            stuffs = new List<Stuff>(BDConnection.connection.Stuff.ToList());
+            DataContext = this;
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -32,22 +35,27 @@ namespace Decor.Pages
 
         private void lvGuest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            var isSelected = lvGuest.SelectedItem as Stuff;
+            if (isSelected != null)
+            {
+                NavigationService.Navigate(new EditStuffPage(isSelected));
+            }
+            
         }
 
         private void btnCreateOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new CreateOrderPage());
         }
 
         private void btnOrders_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new OrdersListPage());
         }
 
         private void btnAddStuff_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddStuffPage());
         }
     }
 }

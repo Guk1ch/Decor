@@ -17,30 +17,32 @@ using Decor.DataBase;
 namespace Decor.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ManageMainPage.xaml
+    /// Логика взаимодействия для OrdersListPage.xaml
     /// </summary>
-    public partial class ManageMainPage : Page
+    public partial class OrdersListPage : Page
     {
-        public static List<Stuff> stuffs { get; set; }
-        public ManageMainPage(User user)
+        public static List<Order> orders { get; set; }
+        public static List<Busket> buskets { get; set; }
+        public OrdersListPage()
         {
             InitializeComponent();
-            stuffs = new List<Stuff>(BDConnection.connection.Stuff.ToList());
+            orders = new List<Order>(BDConnection.connection.Order.ToList());
             DataContext = this;
         }
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AuthorisPage());
+            NavigationService.GoBack();
         }
 
         private void btnCreateOrder_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateOrderPage());
+
         }
 
-        private void btnOrders_Click(object sender, RoutedEventArgs e)
+        private void lvGuest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new OrdersListPage());
+
         }
     }
 }

@@ -17,26 +17,14 @@ using Decor.DataBase;
 namespace Decor.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ClienMainPage.xaml
+    /// Логика взаимодействия для EditStuffPage.xaml
     /// </summary>
-    public partial class ClienMainPage : Page
+    public partial class EditStuffPage : Page
     {
         public static List<Stuff> stuffs { get; set; }
-        public ClienMainPage(User user)
+        public EditStuffPage(Stuff stuff)
         {
             InitializeComponent();
-            stuffs = new List<Stuff>(BDConnection.connection.Stuff.ToList());
-            DataContext = this;
-        }
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AuthorisPage());
-        }
-
-
-        private void btnCreateOrder_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -21,9 +21,12 @@ namespace Decor.Pages
     /// </summary>
     public partial class EmplMainPage : Page
     {
+        public static List<Stuff> stuffs { get; set; }
         public EmplMainPage(User user)
         {
             InitializeComponent();
+            stuffs = new List<Stuff>(BDConnection.connection.Stuff.ToList());
+            DataContext = this;
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
